@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coffee House App Redirect</title>
+  <script>
+    function openApp() {
+      // Using the intent URL with your package and your host/path
+      const appUrl = "intent://page?id=123#Intent;scheme=http;package=com.thecoffeehouse.guestapp;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.thecoffeehouse.guestapp%26hl%3Den;end";
+
+      // Direct fallback URL to Play Store
+      const fallbackUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
+
+      // Try opening the app
+      window.location.href = appUrl;
+
+      // If it doesn't open, redirect to fallback after 1.5 seconds
+      setTimeout(() => {
+        window.location.href = fallbackUrl;
+      }, 1500);
+    }
+  </script>
+</head>
+<body onload="openApp()">
+  <h1>Redirecting to The Coffee House app...</h1>
+  <p>If you are not redirected automatically, <a id="fallback-link" href="#">click here</a>.</p>
+  <script>
+    document.getElementById('fallback-link').href = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
+  </script>
+</body>
+</html>
