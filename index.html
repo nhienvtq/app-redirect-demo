@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coffee House App Redirect</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting...</title>
   <script>
-    function openApp() {
-      // Using the intent URL with your package and your host/path
-      const appUrl = "intent://page?id=123#Intent;scheme=http;package=com.thecoffeehouse.guestapp;S.browser_fallback_url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.thecoffeehouse.guestapp%26hl%3Den;end";
+    // URLs for your app
+    const androidUrl = "https://play.google.com/store/apps/details?id=com.example.yourapp";
+    const iosUrl = "https://apps.apple.com/app/id1234567890";
+    const fallbackUrl = "https://yourwebsite.com"; // optional
 
-      // Direct fallback URL to Play Store
-      const fallbackUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
+    // User agent detection
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Try opening the app
-      window.location.href = appUrl;
-
-      // If it doesn't open, redirect to fallback after 1.5 seconds
-      setTimeout(() => {
-        window.location.href = fallbackUrl;
-      }, 1500);
+    if (/android/i.test(ua)) {
+      window.location.href = androidUrl;
+    } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+      window.location.href = iosUrl;
+    } else {
+      window.location.href = fallbackUrl;
     }
   </script>
 </head>
-<body onload="openApp()">
-  <h1>Redirecting to The Coffee House app...</h1>
-  <p>If you are not redirected automatically, <a id="fallback-link" href="#">click here</a>.</p>
-  <script>
-    document.getElementById('fallback-link').href = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
-  </script>
+<body>
+  <p>Redirecting you to the app...</p>
 </body>
 </html>
