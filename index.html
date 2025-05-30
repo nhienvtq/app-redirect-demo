@@ -1,28 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting...</title>
-  <script>
-    const androidIntent = "intent://#Intent;package=com.thecoffeehouse.guestapp;scheme=market;end";
-    const iosUrl = "https://apps.apple.com/app/id000000000"; // replace with your real iOS app
-    const fallbackUrl = "https://www.thecoffeehouse.com";
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open App</title>
+</head>
+<body>
+  <p>Tap the button to open the app:</p>
+  <button onclick="redirectToApp()">Open App</button>
 
-    window.onload = () => {
+  <script>
+    function redirectToApp() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 
       if (/android/i.test(ua)) {
-        window.location.href = androidIntent;
+        window.location.href = "intent://#Intent;package=com.thecoffeehouse.guestapp;scheme=market;end";
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        window.location.href = iosUrl;
+        window.location.href = "https://apps.apple.com/app/id000000000"; // Replace with iOS App Store link
       } else {
-        window.location.href = fallbackUrl;
+        window.location.href = "https://www.thecoffeehouse.com"; // Web fallback
       }
-    };
+    }
   </script>
-</head>
-<body>
-  <p>Redirecting you to the app...</p>
 </body>
 </html>
