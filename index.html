@@ -7,14 +7,14 @@
 </head>
 <body>
   <p>Tap the button to open the app or store:</p>
-  <button onclick="redirectToApp()">Open App or Store 1</button>
+  <button onclick="redirectToApp()">Open App or Store 2</button>
 
   <script>
     function redirectToApp() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 
       if (/android/i.test(ua)) {
-        window.location.href = "intent://home#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;";
+        window.location.href = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         window.location.href = "https://apps.apple.com/app/id000000000"; // Replace with iOS App Store link
       } else {
