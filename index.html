@@ -12,6 +12,15 @@
   <button onclick="redirectToApp2()">Open App or Store 2</button>
   
   <script>
+    if (/android/i.test(ua)) {
+        window.location.href = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id1138218678"; // Replace with iOS App Store link
+      } else {
+        window.location.href = "https://www.thecoffeehouse.com"; // Web fallback
+      }
+    }
+    
     function redirectToApp() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 //"intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
