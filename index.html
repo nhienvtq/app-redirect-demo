@@ -11,8 +11,10 @@
     }
 
     window.onload = function () {
-      const suffix = getQueryParam("ref") || "default";
-      const encodedDeeplink = encodeURIComponent("https://order.thecoffeehouse.com/order?collection_id=67c1e980dcb62424520ebbc2&source=" + suffix);
+      const suf_source = getQueryParam("src") || "default";
+      const suf_collectionId = getQueryParam("colId") || "";
+
+      const encodedDeeplink = encodeURIComponent("https://order.thecoffeehouse.com/order?collection_id="+suf_collectionId+"src="+suf_source);
 
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};end;`;
       const iosUrl = "https://apps.apple.com/app/id1234567890";
