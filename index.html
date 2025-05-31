@@ -48,14 +48,16 @@
   
 <body>
 
-  <p>Redirecting you to the app in 3 seconds...test1</p>
+  <p>Redirecting you to the app in 3 seconds...test5</p>
 
-  
   <div id="popup">
+  <button id="openBtn">Open</button>
+</div>
+<!--   <div id="popup">
     <p>Couldn't open the app?</p>
     <button onclick="openAppStore()">Open in App Store</button>
 <!--     <p id="debug-url" style="margin-top: 1rem; color: white;"></p> -->
-  </div>
+  </div> -->
   
   <script>
     function getQueryParam(param) {
@@ -74,7 +76,10 @@
       const encodeSrc = encodeURIComponent(suf_src);
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
       const fallbackUrl = "https://yourwebsite.com";
-      
+      // Optional: handle "Open" button click
+  document.getElementById('openBtn').onclick = function() {
+    openAppStore();
+  };
     window.onload = function () {
 
       setTimeout(() => {
