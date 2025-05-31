@@ -1,94 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting...</title>
+  <meta charset="UTF-8">
+  <title>Popup Demo</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
     #popup {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: sans-serif;
-      z-index: 9999;
-    }
-    #popup button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #007aff;
-      border: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       border-radius: 8px;
+      z-index: 1000;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
       color: white;
+      border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
 </head>
 <body>
-  <p>Redirecting you to the app...test1</p>
 
-  <div id="popup">
-    <p id="popup-text">Couldn't open the app?</p>
-    <button id="popup-button">Open App Store</button>
-  </div>
+<div id="overlay"></div>
 
-  <script>
-    const appScheme = "tch://home";
-    const appStoreUrl = "https://apps.apple.com/vn/app/the-coffee-house/id1138218678";
-    const androidIntent = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+<div id="popup">
+  <button id="openBtn">Open</button>
+</div>
 
-    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-    const isAndroid = /android/i.test(navigator.userAgent);
-
-    const now = Date.now();
-    let visibilityChanged = false;
-
-    // Listen for when the user leaves the page
-    document.addEventListener("visibilitychange", () => {
-      if (document.visibilityState === "hidden") {
-        visibilityChanged = true;
-      }
-    });
-
-    setTimeout(() => {
-      if (!visibilityChanged) {
-        // App not opened, show popup
-        document.getElementById("popup").style.display = "flex";
-
-        if (isIOS) {
-          document.getElementById("popup-text").textContent = "Couldn't open the app?";
-          document.getElementById("popup-button").textContent = "Open in App Store";
-          document.getElementById("popup-button").onclick = () => {
-            window.location.href = appStoreUrl;
-          };
-        } else if (isAndroid) {
-          document.getElementById("popup-text").textContent = "Couldn't open the app?";
-          document.getElementById("popup-button").textContent = "Open in Play Store";
-          document.getElementById("popup-button").onclick = () => {
-            window.location.href = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp";
-          };
-        }
-      }
+<script>
+  // Show the popup after 2 seconds
+  window.onload = function() {
+    setTimeout(function() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
     }, 2000);
+  };
 
-    // Try to open the app after a short delay
-    setTimeout(() => {
-      if (isIOS) {
-        window.location = appScheme;
-      } else if (isAndroid) {
-        window.location = androidIntent;
-      }
-    }, 100);
-  </script>
+  // Optional: handle "Open" button click
+  document.getElementById('openBtn').onclick = function() {
+    alert('Button clicked!');
+  };
+</script>
+
 </body>
 </html>
+
 
 
 
