@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing 2</p>
+    <p>Redirecting by link in 1 seconds: testing 3</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
@@ -63,9 +63,12 @@
       function openAppStore() {
         // window.location.href = iosUrl; 
         window.location = "tch://";
-        setTimeout(() => {
+        let fallbackTimer = setTimeout(() => {
       window.location = "https://apps.apple.com/app/id1138218678";
     }, 1500);
+         window.addEventListener("pagehide", function() {
+              clearTimeout(fallbackTimer);
+            });
       }
       const iosUrl = "https://apps.apple.com/app/id1138218678";
       const suffix = getQueryParam("ref") || "default";
