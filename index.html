@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Open App or Store</title>
-   <script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Redirecting 1 2 3...</title>
+  <script>
     // URLs for your app
-    const androidUrl = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+    const androidUrl = "intent://https#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;";
     const iosUrl = "https://apps.apple.com/app/id1234567890";
     const fallbackUrl = "https://yourwebsite.com"; // optional
 
@@ -21,6 +21,18 @@
       window.location.href = fallbackUrl;
     }
   </script>
+</head>
+<body>
+  <p>Redirecting you to the app...</p>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Open App or Store</title>
 </head>
 <body>
   <p>Tap the button to open the app or store: test redirect</p>
@@ -58,3 +70,4 @@
   </script>
 </body>
 </html>
+ -->
