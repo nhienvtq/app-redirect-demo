@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing...</p>
+    <p>Redirecting by link in 1 seconds: testing.....</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
@@ -82,16 +82,16 @@
             debug.textContent = "Trying installed app";
             
             window.location = "tch://"
-              document.body.appendChild(iframe);
+            
             let fallbackTimer = setTimeout(function() {
               debug.textContent = "Open on AppStore?";
               document.getElementById('popup').style.display = 'block';
               document.getElementById('overlay').style.display = 'block';
             }, 2000);
             // Optional: Clear timeout if user is redirected (app is installed)
-            window.addEventListener("pagehide", function() {
-              clearTimeout(fallbackTimer);
-            });
+            // window.addEventListener("pagehide", function() {
+            //   clearTimeout(fallbackTimer);
+            // });
           } else {
             window.location.href = fallbackUrl;
           }
