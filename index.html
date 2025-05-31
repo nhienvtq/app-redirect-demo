@@ -75,6 +75,10 @@
     
     function openAppStore() {
       window.location.href = iosUrl; // your app store link
+
+      
+  const debug = document.getElementById("debug-url");
+  debug.textContent = "Redirecting to: " + iosUrl;
     }
   </script>
 </head>
@@ -85,6 +89,7 @@
   <div id="popup">
     <p>Couldn't open the app?</p>
     <button onclick="openAppStore()">Open in App Store</button>
+    <p id="debug-url" style="margin-top: 1rem; color: white;"></p>
   </div>
 </body>
 
