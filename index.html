@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing 4</p>
+    <p>Redirecting by link in 1 seconds: testing 1</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
@@ -80,18 +80,20 @@
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
             // Try to open the app
             debug.textContent = "Trying installed app";
-            // Use iframe to try opening the app without triggering Safari error
-            let iframe = document.createElement('iframe');
-iframe.src = "tch://";
-iframe.style.position = "absolute";
-iframe.style.top = "0";
-iframe.style.left = "0";
-iframe.style.width = "1px";
-iframe.style.height = "1px";
-iframe.style.opacity = "0";
-iframe.style.border = "none";
             
-            document.body.appendChild(iframe);
+            window.location = "tch://"
+            // Use iframe to try opening the app without triggering Safari error
+//             let iframe = document.createElement('iframe');
+// iframe.src = "tch://";
+// iframe.style.position = "absolute";
+// iframe.style.top = "0";
+// iframe.style.left = "0";
+// iframe.style.width = "1px";
+// iframe.style.height = "1px";
+// iframe.style.opacity = "0";
+// iframe.style.border = "none";
+            
+//             document.body.appendChild(iframe);
             let fallbackTimer = setTimeout(function() {
               debug.textContent = "App not installed. Open on AppStore?";
               document.getElementById('popup').style.display = 'block';
