@@ -46,7 +46,7 @@
 <body>
 
 <div id="overlay"></div>
- <p>Redirecting you to the app in 3 seconds...test1</p>
+ <p>Redirecting you to the app in 3 seconds...test2</p>
 <div id="popup">
   <button id="openBtn">Open AppStore</button>
 </div>
@@ -64,7 +64,7 @@
   
   // Show the popup after 2 seconds
   window.onload = function() {
-    setTimeout(function() {
+    setTimeout(() => {
        const ua = navigator.userAgent || navigator.vendor || window.opera;
         if (/android/i.test(ua)) {
           window.location.href = androidUrl;
@@ -72,7 +72,7 @@
           setTimeout(function(){
       document.getElementById('popup').style.display = 'block';
       document.getElementById('overlay').style.display = 'block';
-          },2000);
+          },5000);
         } else {
           window.location.href = fallbackUrl;
         }
