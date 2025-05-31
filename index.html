@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing 1</p>
+    <p>Redirecting by link in 1 seconds: testing 2</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
@@ -61,7 +61,11 @@
       }
 
       function openAppStore() {
-        window.location.href = iosUrl; 
+        // window.location.href = iosUrl; 
+        window.location = "tch://";
+        setTimeout(() => {
+      window.location = "https://apps.apple.com/app/id1138218678";
+    }, 1500);
       }
       const iosUrl = "https://apps.apple.com/app/id1138218678";
       const suffix = getQueryParam("ref") || "default";
@@ -79,30 +83,20 @@
             window.location.href = androidUrl;
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
             // Try to open the app
-            debug.textContent = "Trying installed app";
+            // debug.textContent = "Trying installed app";
             
-            window.location = "tch://"
-            // Use iframe to try opening the app without triggering Safari error
-//             let iframe = document.createElement('iframe');
-// iframe.src = "tch://";
-// iframe.style.position = "absolute";
-// iframe.style.top = "0";
-// iframe.style.left = "0";
-// iframe.style.width = "1px";
-// iframe.style.height = "1px";
-// iframe.style.opacity = "0";
-// iframe.style.border = "none";
-            
-//             document.body.appendChild(iframe);
-            let fallbackTimer = setTimeout(function() {
-              debug.textContent = "App not installed. Open on AppStore?";
+            // window.location = "tch://"
+            //   document.body.appendChild(iframe);
+            // let fallbackTimer = setTimeout(function() {
+              // debug.textContent = "App not installed. Open on AppStore?";
+              debug.textContent = "click button";
               document.getElementById('popup').style.display = 'block';
               document.getElementById('overlay').style.display = 'block';
-            }, 2000);
-            // Optional: Clear timeout if user is redirected (app is installed)
-            window.addEventListener("pagehide", function() {
-              clearTimeout(fallbackTimer);
-            });
+            // }, 2000);
+            // // Optional: Clear timeout if user is redirected (app is installed)
+            // window.addEventListener("pagehide", function() {
+            //   clearTimeout(fallbackTimer);
+            // });
           } else {
             window.location.href = fallbackUrl;
           }
