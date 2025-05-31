@@ -59,11 +59,11 @@
           
            let showPopup = setTimeout(() => {
               document.getElementById("popup").style.display = "flex";
-            }, 1000);
-          window.addEventListener("pagehide", function () {
-              clearTimeout(showPopup);
-          });
-          window.location = "tch://"
+            }, 2000);
+          // window.addEventListener("pagehide", function () {
+          //     clearTimeout(showPopup);
+          // });
+          // window.location = "tch://"
           
         } else {
           window.location.href = fallbackUrl;
@@ -78,7 +78,7 @@
   </script>
 </head>
 <body>
-  <p>Redirecting you to the app in 3 seconds...</p>
+  <p>Redirecting you to the app in 3 seconds...test1</p>
 </body>
 </html>
 
