@@ -74,7 +74,7 @@
       window.onload = function() {
         setTimeout(() => {
           const ua = navigator.userAgent || navigator.vendor || window.opera;
-          debug.textContent = "timeout1";
+          debug.textContent = "Loading successfully";
           if (/android/i.test(ua)) {
             window.location.href = androidUrl;
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
