@@ -36,7 +36,8 @@
       const urlParams = new URLSearchParams(window.location.search);
       return urlParams.get(param);
     }
-
+    
+    const iosUrl = "https://apps.apple.com/app/id1138218678";
     window.onload = function () {
       const suffix = getQueryParam("ref") || "default";
       const encodedDeeplink = encodeURIComponent(suffix);
@@ -45,7 +46,7 @@
       const encodeSrc = encodeURIComponent(suf_src);
 
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-      const iosUrl = "https://apps.apple.com/app/id1138218678";
+      
       const fallbackUrl = "https://yourwebsite.com";
 
       setTimeout(() => {
@@ -78,7 +79,7 @@
   </script>
 </head>
 <body>
-  <p>Redirecting you to the app in 3 seconds...test2</p>
+  <p>Redirecting you to the app in 3 seconds...test3</p>
 
   
   <div id="popup">
