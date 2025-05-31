@@ -48,7 +48,7 @@
   
 <body>
 
-  <p>Redirecting you to the app in 3 seconds...test6</p>
+  <p>Redirecting you to the app in 3 seconds...test7</p>
   
 <p id="debug-url" style="margin-top: 1rem; color: white;"></p>
   
@@ -79,12 +79,12 @@
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
       const fallbackUrl = "https://yourwebsite.com";
       
+            const debug = document.getElementById("debug-url");
     window.onload = function () {
 
       setTimeout(() => {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-            const debug = document.getElementById("debug-url");
             debug.textContent = "timeout1" ;
         if (/android/i.test(ua)) {
           
@@ -96,11 +96,11 @@
 
           // Try to open the app
           window.location = "tch://";
-            const debug = document.getElementById("debug-url");
+          
             debug.textContent = "tch" ;
 
           setTimeout(function() {
-            const debug = document.getElementById("debug-url");
+            
             debug.textContent = "here" ;
       document.getElementById('popup').style.display = 'block';
       document.getElementById('overlay').style.display = 'block';
