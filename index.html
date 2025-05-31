@@ -5,31 +5,57 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Redirecting...</title>
   <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
     #popup {
       display: none;
       position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.6);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      font-family: sans-serif;
-      z-index: 9999;
-    }
-    #popup button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background: #007aff;
-      border: none;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 20px 30px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
       border-radius: 8px;
+      z-index: 1000;
+    }
+    #overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+    }
+    button {
+      padding: 8px 16px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
       color: white;
+      border-radius: 5px;
       cursor: pointer;
-      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
   </style>
+  
+</head>
+  
+<body>
+
+  <p>Redirecting you to the app in 3 seconds...test1</p>
+
+  
+  <div id="popup">
+    <p>Couldn't open the app?</p>
+    <button onclick="openAppStore()">Open in App Store</button>
+<!--     <p id="debug-url" style="margin-top: 1rem; color: white;"></p> -->
+  </div>
   
   <script>
     function getQueryParam(param) {
@@ -37,17 +63,19 @@
       return urlParams.get(param);
     }
     
-    const iosUrl = "https://apps.apple.com/app/id1138218678";
-    window.onload = function () {
+    function openAppStore() {
+      window.location.href = iosUrl; // your app store link
+    
+    
+      const iosUrl = "https://apps.apple.com/app/id1138218678";
       const suffix = getQueryParam("ref") || "default";
       const encodedDeeplink = encodeURIComponent(suffix);
-      
       const suf_src = getQueryParam("src") || "";
       const encodeSrc = encodeURIComponent(suf_src);
-
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-      
       const fallbackUrl = "https://yourwebsite.com";
+      
+    window.onload = function () {
 
       setTimeout(() => {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
@@ -63,6 +91,10 @@
           // Try to open the app
           window.location = "tch://";
 
+          setTimeout(function() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }, 4000);
           // After 2 seconds, check if the user is still on the page
           // setTimeout(() => {
           //   const elapsed = Date.now() - now;
@@ -79,24 +111,12 @@
     };
 
     
-    function openAppStore() {
-      window.location.href = iosUrl; // your app store link
 
       
   // const debug = document.getElementById("debug-url");
   // debug.textContent = "Redirecting to: " + iosUrl;
     }
   </script>
-</head>
-<body>
-  <p>Redirecting you to the app in 3 seconds...test1</p>
-
-  
-  <div id="popup">
-    <p>Couldn't open the app?</p>
-    <button onclick="openAppStore()">Open in App Store</button>
-<!--     <p id="debug-url" style="margin-top: 1rem; color: white;"></p> -->
-  </div>
 </body>
 
 </html>
