@@ -110,7 +110,7 @@
   
 </head>
   <body>
-  <p>Redirecting you to the app in 3 seconds...test9</p>
+  <p>Redirecting you to the app in 3 seconds...test1</p>
 <div id="overlay"></div>
   
   <div id="popup">
@@ -153,6 +153,11 @@
 
           // Try to open the app
           window.location = "tch://";
+
+          setTimeout(function() {
+      document.getElementById('popup').style.display = 'block';
+      document.getElementById('overlay').style.display = 'block';
+    }, 5000);
 
           // After 2 seconds, check if the user is still on the page
           // setTimeout(() => {
