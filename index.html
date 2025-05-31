@@ -12,8 +12,9 @@
 
     window.onload = function () {
       const suffix = getQueryParam("ref") || "default";
+      const suf_src = getQueryParam("src") || "";
 
-      const encodedDeeplink = encodeURIComponent(suffix);
+      const encodedDeeplink = encodeURIComponent(suffix + "src=" + suf_src);
 
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};end;`;
       const iosUrl = "https://apps.apple.com/app/id1234567890";
