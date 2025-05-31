@@ -49,13 +49,12 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 1</p>
+    <p>Redirecting by link in 3 seconds: testing 2</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Starting...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
     </div>
-	  
-	  <script>
+    <script>
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
@@ -63,44 +62,49 @@
 
       function openAppStore() {
         window.location.href = iosUrl; // your app store link
-        
         // const debug = document.getElementById("debug-url");
         // debug.textContent = "Redirecting to: " + iosUrl;
       }
-
       const iosUrl = "https://apps.apple.com/app/id1138218678";
-        const suffix = getQueryParam("ref") || "default";
-        const encodedDeeplink = encodeURIComponent(suffix);
-        const suf_src = getQueryParam("src") || "";
-        const encodeSrc = encodeURIComponent(suf_src);
-        const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-        const fallbackUrl = "https://yourwebsite.com";
-        const debug = document.getElementById("debug-url");
-        window.onload = function() {
-          setTimeout(() => {
-            const ua = navigator.userAgent || navigator.vendor || window.opera;
-            debug.textContent = "timeout1";
-            if (/android/i.test(ua)) {
-              window.location.href = androidUrl;
-            } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-              // const now = Date.now();
-              // Try to open the app
-              window.location = "tch://";
-              debug.textContent = "trying installed app";
-              setTimeout(function() {
-                debug.textContent = "Go to store...";
-                document.getElementById('popup').style.display = 'block';
-                document.getElementById('overlay').style.display = 'block';
-              }, 2000);
-            } else {
-              window.location.href = fallbackUrl;
-            }
-          }, 3000);
-        };
-        // Optional: handle "Open" button click
-        document.getElementById('openBtn').onclick = function() {
-          openAppStore();
-        };
+      const suffix = getQueryParam("ref") || "default";
+      const encodedDeeplink = encodeURIComponent(suffix);
+      const suf_src = getQueryParam("src") || "";
+      const encodeSrc = encodeURIComponent(suf_src);
+      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
+      const fallbackUrl = "https://yourwebsite.com";
+      const debug = document.getElementById("debug-url");
+      window.onload = function() {
+        setTimeout(() => {
+          const ua = navigator.userAgent || navigator.vendor || window.opera;
+          debug.textContent = "timeout1";
+          if (/android/i.test(ua)) {
+            window.location.href = androidUrl;
+          } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+            // Try to open the app
+            debug.textContent = "trying installed app";
+            // Use iframe to try opening the app without triggering Safari error
+            let iframe = document.createElement('iframe');
+            iframe.style.display = 'none';
+            iframe.src = "tch://";
+            document.body.appendChild(iframe);
+            let fallbackTimer = setTimeout(function() {
+              debug.textContent = "App not installed. Showing store popup.";
+              document.getElementById('popup').style.display = 'block';
+              document.getElementById('overlay').style.display = 'block';
+            }, 2000);
+            // Optional: Clear timeout if user is redirected (app is installed)
+            window.addEventListener("pagehide", function() {
+              clearTimeout(fallbackTimer);
+            });
+          } else {
+            window.location.href = fallbackUrl;
+          }
+        }, 3000);
+      };
+      // Optional: handle "Open" button click
+      document.getElementById('openBtn').onclick = function() {
+        openAppStore();
+      };
     </script>
   </body>
 </html>
