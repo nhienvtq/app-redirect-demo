@@ -52,17 +52,19 @@
         const ua = navigator.userAgent || navigator.vendor || window.opera;
 
         if (/android/i.test(ua)) {
-          window.location.href = androidUrl;
-        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-           let showPopup = setTimeout(() => {
-          document.getElementById("popup").style.display = "flex";
-        }, 2000);
-
-        window.addEventListener("pagehide", function () {
-          clearTimeout(showPopup);
-        });
           
+          window.location.href = androidUrl;
+          
+        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+          
+           let showPopup = setTimeout(() => {
+              document.getElementById("popup").style.display = "flex";
+            }, 1000);
+          window.addEventListener("pagehide", function () {
+              clearTimeout(showPopup);
+          });
           window.location = "tch://"
+          
         } else {
           window.location.href = fallbackUrl;
         }
