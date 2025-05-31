@@ -27,10 +27,16 @@
         if (/android/i.test(ua)) {
           window.location.href = androidUrl;
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+           let timeout = setTimeout(() => {
+              window.location = iosUrl; // fallback to App Store
+            }, 2000);
+
+          // Cancel fallback if user leaves the page (i.e., app opened)
+          window.addEventListener("pagehide", function () {
+            clearTimeout(timeout);
+          });
+          
           window.location = "tch://"
-          setTimeout(() => {
-            window.location.href = iosUrl;
-          }, 2000)
         } else {
           window.location.href = fallbackUrl;
         }
