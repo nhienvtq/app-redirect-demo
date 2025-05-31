@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Redirecting 1 2 3...</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting...</title>
   <script>
-    // URLs for your app
-    const androidUrl = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=https://order.thecoffeehouse.com/order?collection_id=67c1e980dcb62424520ebbc2;end;";
-    const iosUrl = "https://apps.apple.com/app/id1234567890";
-    const fallbackUrl = "https://yourwebsite.com"; // optional
+    function getQueryParam(param) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(param);
+    }
 
-    // Redirect after 3 seconds
     window.onload = function () {
+      const suffix = getQueryParam("ref") || "default";
+      const encodedDeeplink = encodeURIComponent("https://order.thecoffeehouse.com/order?collection_id=67c1e980dcb62424520ebbc2&source=" + suffix);
+
+      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};end;`;
+      const iosUrl = "https://apps.apple.com/app/id1234567890";
+      const fallbackUrl = "https://yourwebsite.com";
+
       setTimeout(() => {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -30,6 +36,7 @@
   <p>Redirecting you to the app in 3 seconds...</p>
 </body>
 </html>
+
 
 <!-- <!DOCTYPE html>
 <html lang="en">
