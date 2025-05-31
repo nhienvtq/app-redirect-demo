@@ -68,8 +68,8 @@
       const encodedDeeplink = encodeURIComponent(suffix);
       const suf_src = getQueryParam("src") || "";
       const encodeSrc = encodeURIComponent(suf_src);
-      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-      const fallbackUrl = "https://yourwebsite.com";
+      const androidUrl = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;";
+      const fallbackUrl = "https://thecoffeehouse.com";
       const debug = document.getElementById("debug-url");
       window.onload = function() {
         setTimeout(() => {
