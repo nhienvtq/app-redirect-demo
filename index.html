@@ -7,16 +7,33 @@
 </head>
 <body>
   <p>Tap the button to open the app or store:</p>
-  <button onclick="redirectToApp()">Open App or Store 3</button>
+  <button onclick="redirectToApp()">Open App or Store 1</button>
 
+  <button onclick="redirectToApp2()">Open App or Store 2</button>
+  
   <script>
     function redirectToApp() {
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 //"intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+      //"intent://https#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;"
       if (/android/i.test(ua)) {
-        window.location.href = "intent://https#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;";
+        window.location.href = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        window.location.href = "https://apps.apple.com/app/id000000000"; // Replace with iOS App Store link
+        window.location.href = "https://apps.apple.com/app/id1138218678"; // Replace with iOS App Store link
+      } else {
+        window.location.href = "https://www.thecoffeehouse.com"; // Web fallback
+      }
+    }
+
+    function redirectToApp2() {
+      
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
+//"intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+      //"intent://https#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;"
+      if (/android/i.test(ua)) {
+        window.location.href = "intent://https#Intent;scheme=order.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;";
+      } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        window.location.href = "https://apps.apple.com/app/id1138218678"; // Replace with iOS App Store link
       } else {
         window.location.href = "https://www.thecoffeehouse.com"; // Web fallback
       }
