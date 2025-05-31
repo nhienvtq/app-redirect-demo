@@ -61,10 +61,10 @@
            let showPopup = setTimeout(() => {
               document.getElementById("popup").style.display = "flex";
             }, 2000);
-          // window.addEventListener("pagehide", function () {
-          //     clearTimeout(showPopup);
-          // });
-          // window.location = "tch://"
+          window.addEventListener("pagehide", function () {
+              clearTimeout(showPopup);
+          });
+          window.location = "tch://"
           
         } else {
           window.location.href = fallbackUrl;
@@ -77,19 +77,19 @@
       window.location.href = iosUrl; // your app store link
 
       
-  const debug = document.getElementById("debug-url");
-  debug.textContent = "Redirecting to: " + iosUrl;
+  // const debug = document.getElementById("debug-url");
+  // debug.textContent = "Redirecting to: " + iosUrl;
     }
   </script>
 </head>
 <body>
-  <p>Redirecting you to the app in 3 seconds...test4</p>
+  <p>Redirecting you to the app in 3 seconds...test5</p>
 
   
   <div id="popup">
     <p>Couldn't open the app?</p>
     <button onclick="openAppStore()">Open in App Store</button>
-    <p id="debug-url" style="margin-top: 1rem; color: white;"></p>
+<!--     <p id="debug-url" style="margin-top: 1rem; color: white;"></p> -->
   </div>
 </body>
 
