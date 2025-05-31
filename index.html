@@ -49,7 +49,9 @@
 <body>
 
   <p>Redirecting you to the app in 3 seconds...test6</p>
-
+  
+<p id="debug-url" style="margin-top: 1rem; color: white;"></p>
+  
   <div id="popup">
     <button id="openBtn">Open</button>
   </div>
@@ -82,6 +84,8 @@
       setTimeout(() => {
         const ua = navigator.userAgent || navigator.vendor || window.opera;
 
+            const debug = document.getElementById("debug-url");
+            debug.textContent = "timeout1" ;
         if (/android/i.test(ua)) {
           
           window.location.href = androidUrl;
@@ -92,8 +96,12 @@
 
           // Try to open the app
           window.location = "tch://";
+            const debug = document.getElementById("debug-url");
+            debug.textContent = "tch" ;
 
           setTimeout(function() {
+            const debug = document.getElementById("debug-url");
+            debug.textContent = "here" ;
       document.getElementById('popup').style.display = 'block';
       document.getElementById('overlay').style.display = 'block';
     }, 4000);
