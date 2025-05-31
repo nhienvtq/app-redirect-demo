@@ -12,11 +12,12 @@
 
     window.onload = function () {
       const suffix = getQueryParam("ref") || "default";
+      const encodedDeeplink = encodeURIComponent(suffix);
+      
       const suf_src = getQueryParam("src") || "";
+      const encodeSrc = encodeURIComponent(suf_src);
 
-      const encodedDeeplink = encodeURIComponent(suffix + "src=" + suf_src);
-
-      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};end;`;
+      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
       const iosUrl = "https://apps.apple.com/app/id1234567890";
       const fallbackUrl = "https://yourwebsite.com";
 
