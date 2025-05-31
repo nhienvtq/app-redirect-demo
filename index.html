@@ -49,14 +49,13 @@
     </style>
   </head>
   <body>
-    <p>Redirecting you to the app in 3 seconds...test4</p>
-    <p id="debug-url" style="margin-top: 1rem; color: black;">Debug here:</p>
+    <p>Redirecting by link in 3 seconds: testing 1</p>
+    <p id="debug-url" style="margin-top: 1rem; color: black;">Starting...</p>
     <div id="popup">
-      <button id="openBtn">Open</button>
+      <button id="openBtn">Open AppStore</button>
     </div>
-    <!--   <div id="popup"><p>Couldn't open the app?</p><button onclick="openAppStore()">Open in App Store</button>
-		<!--     <p id="debug-url" style="margin-top: 1rem; color: white;"></p> -->
-    <!--   </div> --> --> <script>
+	  
+	  <script>
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
@@ -87,19 +86,12 @@
               // const now = Date.now();
               // Try to open the app
               window.location = "tch://";
-              debug.textContent = "tch";
+              debug.textContent = "trying installed app";
               setTimeout(function() {
-                debug.textContent = "here";
+                debug.textContent = "Go to store...";
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
-              }, 4000);
-              // After 2 seconds, check if the user is still on the page
-              // setTimeout(() => {
-              //   const elapsed = Date.now() - now;
-              //   if (document.visibilityState === "visible" && elapsed > 1500) {
-              //     document.getElementById("popup").style.display = "flex";
-              //   }
-              // }, 2000);
+              }, 2000);
             } else {
               window.location.href = fallbackUrl;
             }
