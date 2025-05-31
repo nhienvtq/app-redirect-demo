@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -25,9 +25,9 @@
 <body>
   <p>Redirecting you to the app...</p>
 </body>
-</html>
+</html> -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -35,7 +35,7 @@
   <title>Open App or Store</title>
 </head>
 <body>
-  <p>Tap the button to open the app or store: test redirect</p>
+  <p>Tap the button to open the app or store: test redirect: test 1</p>
   <button onclick="redirectToApp()">Open App or Store 1</button>
 
   <button onclick="redirectToApp2()">Open App or Store 2</button>
@@ -46,7 +46,7 @@
 //"intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
       //"intent://https#Intent;scheme=links.thecoffeehouse.com;package=com.thecoffeehouse.guestapp;end;"
       if (/android/i.test(ua)) {
-        window.location.href = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;end;";
+        window.location.href = "intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=https://order.thecoffeehouse.com/order?collection_id=67c1e980dcb62424520ebbc2;end;";
       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
         window.location.href = "https://apps.apple.com/app/id1138218678"; // Replace with iOS App Store link
       } else {
@@ -70,4 +70,4 @@
   </script>
 </body>
 </html>
- -->
+
