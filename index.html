@@ -11,10 +11,9 @@
     }
 
     window.onload = function () {
-      const suf_source = getQueryParam("src") || "default";
-      const suf_collectionId = getQueryParam("colId") || "";
+      const suffix = getQueryParam("ref") || "default";
 
-      const encodedDeeplink = encodeURIComponent("https://order.thecoffeehouse.com/order?collection_id="+suf_collectionId+"src="+suf_source);
+      const encodedDeeplink = encodeURIComponent(suffix);
 
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};end;`;
       const iosUrl = "https://apps.apple.com/app/id1234567890";
