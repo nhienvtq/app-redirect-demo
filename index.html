@@ -58,19 +58,19 @@
           
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
           
-           const now = Date.now();
+           // const now = Date.now();
 
           // Try to open the app
           window.location = "tch://";
 
           // After 2 seconds, check if the user is still on the page
-          setTimeout(() => {
-            const elapsed = Date.now() - now;
+          // setTimeout(() => {
+          //   const elapsed = Date.now() - now;
 
-            if (document.visibilityState === "visible" && elapsed > 1500) {
-              document.getElementById("popup").style.display = "flex";
-            }
-          }, 2000);
+          //   if (document.visibilityState === "visible" && elapsed > 1500) {
+          //     document.getElementById("popup").style.display = "flex";
+          //   }
+          // }, 2000);
           
         } else {
           window.location.href = fallbackUrl;
@@ -89,7 +89,7 @@
   </script>
 </head>
 <body>
-  <p>Redirecting you to the app in 3 seconds...test7</p>
+  <p>Redirecting you to the app in 3 seconds...test8</p>
 
   
   <div id="popup">
