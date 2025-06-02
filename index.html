@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing......</p>
+    <p>Redirecting by link in 1 seconds: testing...</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
@@ -71,6 +71,8 @@
       const encodedDeeplink = encodeURIComponent(suffix);
       const suf_src = getQueryParam("src") || "";
       const encodeSrc = encodeURIComponent(suf_src);
+        
+              debug.textContent = `url: ${window.location.href}`;
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
 
         
