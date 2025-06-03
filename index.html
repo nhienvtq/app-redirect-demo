@@ -104,20 +104,18 @@ debug.textContent = `url: ${window.location.href}`;
           const ua = navigator.userAgent || navigator.vendor || window.opera;
 debug.textContent = "Loading successfully";
           if (/android/i.test(ua)) {
+debug.textContent = "Trying installed app";
             window.location.href = androidUrl;
             let fallbackTimer = setTimeout(function() {
-debug.textContent = "Open on Play Store?";
-              document.getElementById('popupAndroid').style.display = 'block';
+debug.textContent = "Open on PlayStore?";
+              document.getElementById('popup').style.display = 'block';
               document.getElementById('overlay').style.display = 'block';
             }, 2000);
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-            // Try to open the app
 debug.textContent = "Trying installed app";
-            
             window.location = "tch://"
-            
             let fallbackTimer = setTimeout(function() {
-debug.textContent = "Open on Store?";
+debug.textContent = "Open on AppStore?";
               document.getElementById('popup').style.display = 'block';
               document.getElementById('overlay').style.display = 'block';
             }, 2000);
