@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 1......</p>
+    <p>Redirecting by link in 3 seconds: testing 2......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
@@ -80,9 +80,8 @@
       }
 
       function openStore() {
-debug.textContent = "text testing";
+debug.textContent = "text testing 1";
         
-          window.location.href = androidStoreUrl; 
         if (/android/i.test(ua)) {
           window.location.href = androidStoreUrl; 
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
