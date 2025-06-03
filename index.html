@@ -102,7 +102,8 @@
       const androidUrl = //`intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
                           `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
 
-      const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en&referrer=deeplink%3D${encodedDeeplink}`;
+      const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3Dhttps%3A%2F%2Forder.thecoffeehouse.com%2Forder";
+        //`https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en&referrer=deeplink%3D${encodedDeeplink}`;
       
       const ua = navigator.userAgent || navigator.vendor || window.opera;
 
