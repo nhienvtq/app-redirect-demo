@@ -9,7 +9,7 @@
         font-family: Arial, sans-serif;
       }
 
-      #popup {
+     #popup {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -23,10 +23,20 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   z-index: 1000;
-  max-width: 90%; /* Allow responsiveness on small screens */
-  word-wrap: break-word; /* Break long words if needed */
+  max-width: 90%;            /* Allow the popup to scale with screen */
+  width: fit-content;        /* Shrink to fit content */
   text-align: center;
-      }
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+.popup-btn {
+  margin-bottom: 10px;
+  padding: 10px 16px;
+  white-space: normal;       /* Allow button text to wrap */
+  max-width: 100%;
+  width: 100%;
+  box-sizing: border-box;
+}
 
       #overlay {
         display: none;
@@ -67,7 +77,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 6......</p>
+    <p>Redirecting by link in 3 seconds: testing 1......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
