@@ -49,10 +49,11 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 1 seconds: testing...</p>
+    <p>Redirecting by link in 1 seconds: testing......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openBtn">Open AppStore</button>
+      <button id="launchAppBtn">Launch app</button>
     </div>
     <script>
       function getQueryParam(param) {
@@ -62,6 +63,9 @@
 
       function openAppStore() {
         window.location.href = iosUrl; 
+      }
+      function launchApp() {
+        window.open(location.href, '_blank');
       }
       const iosUrl = "https://apps.apple.com/app/id1138218678";
       const fallbackUrl = "https://thecoffeehouse.com";
@@ -104,6 +108,9 @@
       // Optional: handle "Open" button click
       document.getElementById('openBtn').onclick = function() {
         openAppStore();
+      };
+      document.getElementById('launchAppBtn').onclick = function() {
+        launchApp();
       };
     </script>
   </body>
