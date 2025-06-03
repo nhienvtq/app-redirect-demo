@@ -49,10 +49,8 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 2......</p>
+    <p>Redirecting by link in 3 seconds: testing 3......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
-
-    <p>If the app doesn't open, please <a href="#" onclick="window.open(location.href, '_blank');">open this page in Safari</a>.</p>
 
     
     <div id="popup">
@@ -87,6 +85,7 @@
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
           window.location.href = iosStoreUrl; 
         }
+debug.textContent = `url: ${window.location.href}`;
       }
       function launchApp() {
         if (/android/i.test(ua)) {
