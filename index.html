@@ -49,7 +49,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 2......</p>
+    <p>Redirecting by link in 3 seconds: testing 3......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
@@ -73,6 +73,7 @@
       const encodeSrc = encodeURIComponent(suf_src);
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
 
+        const ua = navigator.userAgent || navigator.vendor || window.opera;
       
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -81,7 +82,6 @@
 
       function openStore() {
 debug.textContent = "text testing 1";
-        
         if (/android/i.test(ua)) {
           window.location.href = androidStoreUrl; 
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
@@ -101,7 +101,7 @@ debug.textContent = "text testing 1";
 debug.textContent = `url: ${window.location.href}`;
       
         setTimeout(() => {
-          const ua = navigator.userAgent || navigator.vendor || window.opera;
+          //const ua = navigator.userAgent || navigator.vendor || window.opera;
 debug.textContent = "Loading successfully";
           if (/android/i.test(ua)) {
 debug.textContent = "Trying installed app";
