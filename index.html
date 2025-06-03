@@ -81,11 +81,11 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 7......</p>
+    <p>Redirecting by link in 3 seconds: testing 1......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
-      <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
+<!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
     </div>
     <script>
       const debug = document.getElementById("debug-url");
@@ -115,18 +115,18 @@
       }
 
       function launchApp() {
-        if (/android/i.test(ua)) {
-          window.location.href = androidUrl;
-        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-          const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
-          const isInstagram = /Instagram/.test(navigator.userAgent);
-          if (isFacebook || isInstagram) {
-            // Redirect using custom scheme (fallback)
-            window.location = "tch://screenA?userId=123";
-          }
-          // window.location.href = "tch://"
-          //window.open(location.href, '_blank');
-        }
+        // if (/android/i.test(ua)) {
+        //   window.location.href = androidUrl;
+        // } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+        //   const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
+        //   const isInstagram = /Instagram/.test(navigator.userAgent);
+        //   if (isFacebook || isInstagram) {
+        //     // Redirect using custom scheme (fallback)
+        //     window.location = "tch://screenA?userId=123";
+        //   }
+        //   // window.location.href = "tch://"
+        //   //window.open(location.href, '_blank');
+        // }
       }
       window.onload = function() {
         debug.textContent = `url: ${window.location.href}`;
@@ -134,7 +134,7 @@
           //const ua = navigator.userAgent || navigator.vendor || window.opera;
           debug.textContent = "Loading successfully";
           if (/android/i.test(ua)) {
-            debug.textContent = "Trying installed app";
+            //debug.textContent = "Trying installed app";
             window.location.href = androidUrl;
             let fallbackTimer = setTimeout(function() {
               debug.textContent = "Open on PlayStore?";
@@ -142,7 +142,7 @@
               document.getElementById('overlay').style.display = 'block';
             }, 2000);
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-            debug.textContent = "Trying installed app";
+            //debug.textContent = "Trying installed app";
             window.location = iosUrl;
               let fallbackTimer = setTimeout(function() {
                 debug.textContent = "Open on AppStore?";
