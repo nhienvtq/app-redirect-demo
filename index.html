@@ -81,18 +81,17 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 1......</p>
+    <p>Redirecting by link in 3 seconds: testing 2......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     <div id="popup">
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
-<!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
+      <!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
     </div>
     <script>
       const debug = document.getElementById("debug-url");
       const fallbackUrl = "https://thecoffeehouse.com";
       const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
       const iosUrl = "tch://screenA?userId=123";
-      
       const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
       const suffix = getQueryParam("ref") || "default";
       const encodedDeeplink = encodeURIComponent(suffix);
@@ -113,59 +112,27 @@
           window.location.href = iosStoreUrl;
         }
       }
-
-      function launchApp() {
-        // if (/android/i.test(ua)) {
-        //   window.location.href = androidUrl;
-        // } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-        //   const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
-        //   const isInstagram = /Instagram/.test(navigator.userAgent);
-        //   if (isFacebook || isInstagram) {
-        //     // Redirect using custom scheme (fallback)
-        //     window.location = "tch://screenA?userId=123";
-        //   }
-        //   // window.location.href = "tch://"
-        //   //window.open(location.href, '_blank');
-        // }
-      }
       window.onload = function() {
         debug.textContent = `url: ${window.location.href}`;
         setTimeout(() => {
-          //const ua = navigator.userAgent || navigator.vendor || window.opera;
-          debug.textContent = "Loading successfully";
-          if (/android/i.test(ua)) {
-            //debug.textContent = "Trying installed app";
-            window.location.href = androidUrl;
-            let fallbackTimer = setTimeout(function() {
-              debug.textContent = "Open on PlayStore?";
-              document.getElementById('popup').style.display = 'block';
-              document.getElementById('overlay').style.display = 'block';
-            }, 2000);
-          } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-            //debug.textContent = "Trying installed app";
-            window.location = iosUrl;
+            debug.textContent = "Load successfully";
+            if (/android/i.test(ua)) {
+              //debug.textContent = "Trying installed app";
+              window.location.href = androidUrl;
+              let fallbackTimer = setTimeout(function() {
+                debug.textContent = "Open on PlayStore?";
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+              }, 2000);
+            } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+              //debug.textContent = "Trying installed app";
+              window.location = iosUrl;
               let fallbackTimer = setTimeout(function() {
                 debug.textContent = "Open on AppStore?";
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
               }, 2000);
-            // const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
-            // const isInstagram = /Instagram/.test(navigator.userAgent);
-            
-            // if (isFacebook || isInstagram) {
-            //   window.location = iosUrl;
-            // } else {
-            //   window.location = iosUrl;
-            //   let fallbackTimer = setTimeout(function() {
-            //     debug.textContent = "Open on AppStore?";
-            //     document.getElementById('popup').style.display = 'block';
-            //     document.getElementById('overlay').style.display = 'block';
-            //   }, 2000);
             }
-            // Optional: Clear timeout if user is redirected (app is installed)
-            // window.addEventListener("pagehide", function() {
-            //   clearTimeout(fallbackTimer);
-            // });
           } else {
             window.location.href = fallbackUrl;
           }
@@ -174,9 +141,6 @@
       // Optional: handle "Open" button click
       document.getElementById('openStoreBtn').onclick = function() {
         openStore();
-      };
-      document.getElementById('launchAppBtn').onclick = function() {
-        launchApp();
       };
     </script>
   </body>
