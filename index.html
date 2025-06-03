@@ -79,7 +79,7 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 2......</p>
+    <p>Redirecting by link in 3 seconds: testing 3......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
@@ -123,7 +123,8 @@ debug.textContent = "text testing 1";
         if (/android/i.test(ua)) {
           window.location.href = androidUrl;
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-          window.open(location.href, '_blank');
+           window.location.href = "tch://"
+          //window.open(location.href, '_blank');
         }
       }
       
