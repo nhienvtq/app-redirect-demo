@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -67,9 +67,9 @@
 </script>
 
 </body>
-</html>
+</html> -->
 
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -157,7 +157,7 @@
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
     </div>
-    <p>Redirecting by link in 3 seconds: testing 3......</p>
+    <p>Redirecting by link in 3 seconds: testing 1......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     
     <script>
@@ -185,39 +185,39 @@
           window.location.href = iosStoreUrl;
         }
       }
-      document.addEventListener("DOMContentLoaded", function() {
-      //window.onload = function() {
-        debug.textContent = "running"//`url: ${window.location.href}`;
-      //   setTimeout(() => {
-      //       debug.textContent = "Load successfully";
-      //       if (/android/i.test(ua)) {
-      //         //debug.textContent = "Trying installed app";
-      //         window.location.href = androidUrl;
-      //         let fallbackTimer = setTimeout(function() {
-      //           debug.textContent = "Open on PlayStore?";
-      //           document.getElementById('popup').style.display = 'block';
-      //           document.getElementById('overlay').style.display = 'block';
-      //         }, 2000);
-      //       } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-      //         //debug.textContent = "Trying installed app";
-      //         window.location = iosUrl;
-      //         let fallbackTimer = setTimeout(function() {
-      //           debug.textContent = "Open on AppStore?";
-      //           document.getElementById('popup').style.display = 'block';
-      //           document.getElementById('overlay').style.display = 'block';
-      //         }, 2000);
-      //       }
-      //     } else {
-      //       window.location.href = fallbackUrl;
-      //     }
-      //   }, 3000);
-      // };
+      // document.addEventListener("DOMContentLoaded", function() {
+      window.onload = function() {
+        debug.textContent = "running";//`url: ${window.location.href}`;
+        setTimeout(() => {
+            debug.textContent = "Load successfully";
+            if (/android/i.test(ua)) {
+              //debug.textContent = "Trying installed app";
+              window.location.href = androidUrl;
+              let fallbackTimer = setTimeout(function() {
+                debug.textContent = "Open on PlayStore?";
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+              }, 2000);
+            } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
+              //debug.textContent = "Trying installed app";
+              window.location = iosUrl;
+              let fallbackTimer = setTimeout(function() {
+                debug.textContent = "Open on AppStore?";
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+              }, 2000);
+            }
+          } else {
+            window.location.href = fallbackUrl;
+          }
+        }, 3000);
+      };
       // Optional: handle "Open" button click
-      // document.getElementById('openStoreBtn').onclick = function() {
-      //   openStore();
-      // };
+      document.getElementById('openStoreBtn').onclick = function() {
+        openStore();
+      };
     </script>
     
   </body>
   
-</html> -->
+</html>
