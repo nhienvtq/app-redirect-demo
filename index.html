@@ -50,7 +50,16 @@
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
       }
-
+#openStoreBtn {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 6px;
+}
+      #openStoreBtn.popup-btn {
+  background-color: red;
+  color: white;
+}
 /*       buttonstore {
         padding: 16px 16px;
         font-size: 14px;
@@ -79,12 +88,12 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 4......</p>
+    <p>Redirecting by link in 3 seconds: testing 1......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
     <div id="popup">
-  <button id="openStoreBtn" class="popup-btn">Open Store</button>
+      <button id="openStoreBtn" class="popup-btn">Open Store</button>
   <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
 </div>
     
