@@ -86,7 +86,7 @@
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
 <!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
     </div>
-    <p>Redirecting by link in few seconds: testing 5......</p>
+    <p>Redirecting by link in few seconds: testing 6......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     
     <script>
@@ -99,8 +99,8 @@
       const encodedDeeplink = encodeURIComponent(suffix);
       const suf_src = getQueryParam("src") || "";
       const encodeSrc = encodeURIComponent(suf_src);
-      const androidUrl = //`intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-                          `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
+      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
+                          //`intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
 
       const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3Dhttps%3A%2F%2Forder.thecoffeehouse.com%2Forder";
         //`https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en&referrer=deeplink%3D${encodedDeeplink}`;
