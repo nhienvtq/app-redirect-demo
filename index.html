@@ -92,14 +92,16 @@
     <script>
       const debug = document.getElementById("debug-url");
       const fallbackUrl = "https://thecoffeehouse.com";
-      const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-      const iosUrl = "tch://screenA?userId=123";
-      
+
       const suffix = getQueryParam("ref") || "default";
       const encodedDeeplink = encodeURIComponent(suffix);
+      
+      const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
+      const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
+        //"tch://screenA?userId=123";
+      
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
                           //`intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-
       const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
         //`https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en&referrer=deeplink%3D${encodedDeeplink}`;
       
@@ -126,9 +128,9 @@
               // debug.textContent = "Trying installed app";
               window.location.href = androidUrl;
               let fallbackTimer = setTimeout(function() {
-                debug.textContent = `Open on PlayStore? ${androidStoreUrl}`;
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
+                debug.textContent = `Open on PlayStore? ${androidStoreUrl}`;
               }, 500);
             } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
               //debug.textContent = "Trying installed app";
