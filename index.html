@@ -157,7 +157,7 @@
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
     </div>
-    <p>Redirecting by link in 3 seconds: testing 1......</p>
+    <p>Redirecting by link in 3 seconds: testing 2......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     
     <script>
@@ -206,9 +206,8 @@
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
               }, 2000);
-            }
-          } else {
-            window.location.href = fallbackUrl;
+            } else {
+              window.location.href = fallbackUrl;
           }
         }, 3000);
       };
