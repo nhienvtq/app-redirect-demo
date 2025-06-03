@@ -9,36 +9,38 @@
         font-family: Arial, sans-serif;
       }
 
-     #popup {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  z-index: 1000;
-  max-width: 90vw;
-  width: auto;
-  text-align: center;
-}
+      #popup {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+        border-radius: 8px;
+        z-index: 1000;
+        max-width: 90vw;
+        width: auto;
+        text-align: center;
+      }
 
-.popup-btn {
-  margin-bottom: 10px;
-  padding: 12px 16px;
-  width: 100%;
-  max-width: 220px;  /* Limit button width */
-  white-space: normal;  /* Allow text to wrap */
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  text-align: center;
-  box-sizing: border-box;
-}
+      .popup-btn {
+        margin-bottom: 10px;
+        padding: 12px 16px;
+        width: 100%;
+        max-width: 220px;
+        /* Limit button width */
+        white-space: normal;
+        /* Allow text to wrap */
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        text-align: center;
+        box-sizing: border-box;
+      }
 
       #overlay {
         display: none;
@@ -50,22 +52,23 @@
         background: rgba(0, 0, 0, 0.5);
         z-index: 999;
       }
-#openStoreBtn {
-  background-color: #00CAFF;
-  color: white;
-  border: none;
-  border-radius: 6px;
-}
+
+      #openStoreBtn {
+        background-color: #00CAFF;
+        color: white;
+        border: none;
+        border-radius: 6px;
+      }
+
       #openStoreBtn.popup-btn {
-  background-color: #00CAFF;
-  color: white;
-}
+        background-color: #00CAFF;
+        color: white;
+      }
 
       button:hover {
         background-color: #FFD586;
       }
 
-      
       button {
         padding: 16px 16px;
         font-size: 14px;
@@ -75,88 +78,90 @@
         border-radius: 7px;
         cursor: pointer;
       }
-      
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 4......</p>
+    <p>Redirecting by link in 3 seconds: testing 7......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
-
-    
     <div id="popup">
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
-  <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
-</div>
-    
+      <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
+    </div>
     <script>
       const debug = document.getElementById("debug-url");
-
       const fallbackUrl = "https://thecoffeehouse.com";
-
       const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-
+      const iosUrl = "tch://screenA?userId=123";
       
       const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en";
-        
       const suffix = getQueryParam("ref") || "default";
       const encodedDeeplink = encodeURIComponent(suffix);
       const suf_src = getQueryParam("src") || "";
       const encodeSrc = encodeURIComponent(suf_src);
       const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
+      const ua = navigator.userAgent || navigator.vendor || window.opera;
 
-        const ua = navigator.userAgent || navigator.vendor || window.opera;
-      
       function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
       }
 
       function openStore() {
-debug.textContent = "text testing 1";
         if (/android/i.test(ua)) {
-          window.location.href = androidStoreUrl; 
+          window.location.href = androidStoreUrl;
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-          window.location.href = iosStoreUrl; 
+          window.location.href = iosStoreUrl;
         }
       }
+
       function launchApp() {
         if (/android/i.test(ua)) {
           window.location.href = androidUrl;
         } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
           const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
-  const isInstagram = /Instagram/.test(navigator.userAgent);
- if (isFacebook || isInstagram) {
-    // Redirect using custom scheme (fallback)
-    window.location = "tch://screenA?userId=123";
-  }
-           // window.location.href = "tch://"
+          const isInstagram = /Instagram/.test(navigator.userAgent);
+          if (isFacebook || isInstagram) {
+            // Redirect using custom scheme (fallback)
+            window.location = "tch://screenA?userId=123";
+          }
+          // window.location.href = "tch://"
           //window.open(location.href, '_blank');
         }
       }
-      
       window.onload = function() {
-        
-debug.textContent = `url: ${window.location.href}`;
-      
+        debug.textContent = `url: ${window.location.href}`;
         setTimeout(() => {
           //const ua = navigator.userAgent || navigator.vendor || window.opera;
-debug.textContent = "Loading successfully";
+          debug.textContent = "Loading successfully";
           if (/android/i.test(ua)) {
-debug.textContent = "Trying installed app";
+            debug.textContent = "Trying installed app";
             window.location.href = androidUrl;
             let fallbackTimer = setTimeout(function() {
-debug.textContent = "Open on PlayStore?";
+              debug.textContent = "Open on PlayStore?";
               document.getElementById('popup').style.display = 'block';
               document.getElementById('overlay').style.display = 'block';
             }, 2000);
           } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-debug.textContent = "Trying installed app";
-            window.location = "tch://"
-            let fallbackTimer = setTimeout(function() {
-debug.textContent = "Open on AppStore?";
-              document.getElementById('popup').style.display = 'block';
-              document.getElementById('overlay').style.display = 'block';
-            }, 2000);
+            debug.textContent = "Trying installed app";
+            window.location = iosUrl;
+              let fallbackTimer = setTimeout(function() {
+                debug.textContent = "Open on AppStore?";
+                document.getElementById('popup').style.display = 'block';
+                document.getElementById('overlay').style.display = 'block';
+              }, 2000);
+            // const isFacebook = /FBAN|FBAV/.test(navigator.userAgent);
+            // const isInstagram = /Instagram/.test(navigator.userAgent);
+            
+            // if (isFacebook || isInstagram) {
+            //   window.location = iosUrl;
+            // } else {
+            //   window.location = iosUrl;
+            //   let fallbackTimer = setTimeout(function() {
+            //     debug.textContent = "Open on AppStore?";
+            //     document.getElementById('popup').style.display = 'block';
+            //     document.getElementById('overlay').style.display = 'block';
+            //   }, 2000);
+            }
             // Optional: Clear timeout if user is redirected (app is installed)
             // window.addEventListener("pagehide", function() {
             //   clearTimeout(fallbackTimer);
@@ -173,7 +178,6 @@ debug.textContent = "Open on AppStore?";
       document.getElementById('launchAppBtn').onclick = function() {
         launchApp();
       };
-      
     </script>
   </body>
 </html>
