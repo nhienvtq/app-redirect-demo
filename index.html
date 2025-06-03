@@ -23,18 +23,20 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   border-radius: 8px;
   z-index: 1000;
-  max-width: 90%;            /* Allow the popup to scale with screen */
-  width: fit-content;        /* Shrink to fit content */
+  max-width: 90vw;
+  width: auto;
   text-align: center;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
+
 .popup-btn {
   margin-bottom: 10px;
-  padding: 10px 16px;
-  white-space: normal;       /* Allow button text to wrap */
-  max-width: 100%;
+  padding: 12px 16px;
   width: 100%;
+  max-width: 220px;  /* Limit button width */
+  white-space: normal;  /* Allow text to wrap */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  text-align: center;
   box-sizing: border-box;
 }
 
@@ -77,15 +79,15 @@
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 1......</p>
+    <p>Redirecting by link in 3 seconds: testing 2......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
     <div id="popup">
-      <button id="openStoreBtn" style="margin-bottom: 30px;">Open Store</button>
-      
-      <buttonApp id="launchAppBtn">The Coffe House App</buttonApp>
-    </div>
+  <button id="openStoreBtn" class="popup-btn">Open Store</button>
+  <button id="launchAppBtn" class="popup-btn">The Coffee House App</button>
+</div>
+    
     <script>
       const debug = document.getElementById("debug-url");
 
