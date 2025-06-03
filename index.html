@@ -49,17 +49,29 @@
       button:hover {
         background-color: #0056b3;
       }
+
+      
+      buttonApp {
+        padding: 8px 16px;
+        font-size: 16px;
+        border: 2px;
+        background-color: #FFB22C;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      
     </style>
   </head>
   <body>
-    <p>Redirecting by link in 3 seconds: testing 1......</p>
+    <p>Redirecting by link in 3 seconds: testing 2......</p>
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
 
     
     <div id="popup">
       <button id="openStoreBtn" style="margin-bottom: 10px;">Open Store</button>
       
-      <button id="launchAppBtn">Launch app</button>
+      <buttonApp id="launchAppBtn">Launch app</buttonApp>
     </div>
     <script>
       const debug = document.getElementById("debug-url");
