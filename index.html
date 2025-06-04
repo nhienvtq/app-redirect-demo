@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
+    <title>The Coffee House redirect</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -86,7 +86,7 @@
       <button id="openStoreBtn" class="popup-btn">Open Store</button>
 <!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
     </div>
-    <p>Redirecting by link in few seconds: testing 3......</p>
+<!--     <p>Redirecting...</p> -->
     <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
     
     <script>
@@ -123,14 +123,14 @@
       window.onload = function() {
         //debug.textContent = `url: ${window.location.href}`;
         setTimeout(() => {
-            debug.textContent = "Load successfully";
+            debug.textContent = "Successfully";
             if (/android/i.test(ua)) {
               // debug.textContent = "Trying installed app";
               window.location.href = androidUrl;
               let fallbackTimer = setTimeout(function() {
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
-                debug.textContent = `Open on PlayStore? ${androidStoreUrl}`;
+                debug.textContent = `Open on PlayStore`;// ${androidStoreUrl}`;
               }, 500);
             } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
               //debug.textContent = "Trying installed app";
@@ -143,7 +143,7 @@
             } else {
               window.location.href = fallbackUrl;
           }
-        }, 3000);
+        }, 500);
       };
       // Optional: handle "Open" button click
       document.getElementById('openStoreBtn').onclick = function() {
