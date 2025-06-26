@@ -85,12 +85,40 @@ button:hover {
 
 /* Specific button ID styling if needed */
 #openStoreBtn {
-  background-color: #00caff;
-  border-color: #00caff;
+  position: relative;
+  overflow: hidden;
+  background-color: #91C8E4;
+  border: none;
+  color: white;
+  font-size: 16px;
+  padding: 14px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+
+}
+
+#openStoreBtn .label {
+  position: relative;
+  z-index: 2;
+}
+@keyframes floatZ {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(0) scale(1.05); }
+  100% { transform: translateY(0) scale(1); }
 }
 
 #openStoreBtn:hover {
-  background-color: #00b5e0;
+  background-color: #EAA64D;
+  color: white;
+  
+  box-shadow: 0 0 22px #FFECCC, 0 0 24px #FFECCC;
+  filter: drop-shadow(0 0 8px #FFECCC);
+  
+  animation: floatZ 2s ease-in-out infinite;
 }
 
     </style>
@@ -98,7 +126,14 @@ button:hover {
   
   <body>
     <div id="popup">
-      <button id="openStoreBtn" class="popup-btn">Open Store</button>
+      <button id="openStoreBtn" class="popup-btn">
+  <span class="line top"></span>
+  <span class="line right"></span>
+  <span class="line bottom"></span>
+  <span class="line left"></span>
+  <span class="label">Open Store</span>
+</button>
+
 <!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
     </div>
 <!--     <p>Redirecting...</p> -->
@@ -136,12 +171,12 @@ button:hover {
       }
       // document.addEventListener("DOMContentLoaded", function() {
       window.onload = function() {
-        //debug.textContent = `url: ${window.location.href}`;
+        // debug.textContent = `url: ${window.location.href}`;
         setTimeout(() => {
             debug.textContent = "Successfully";
             if (/android/i.test(ua)) {
               // debug.textContent = "Trying installed app";
-             // window.location.href = androidUrl;
+              window.location.href = androidUrl;
               let fallbackTimer = setTimeout(function() {
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
