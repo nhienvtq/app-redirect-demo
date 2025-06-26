@@ -133,7 +133,7 @@ button:hover {
             debug.textContent = "Successfully";
             if (/android/i.test(ua)) {
               // debug.textContent = "Trying installed app";
-              window.location.href = androidUrl;
+             // window.location.href = androidUrl;
               let fallbackTimer = setTimeout(function() {
                 document.getElementById('popup').style.display = 'block';
                 document.getElementById('overlay').style.display = 'block';
@@ -150,7 +150,7 @@ button:hover {
             } else {
               window.location.href = fallbackUrl;
           }
-        }, 5000);
+        }, 500);
       };
       // Optional: handle "Open" button click
       document.getElementById('openStoreBtn').onclick = function() {
