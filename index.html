@@ -1,206 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Coffee House redirect</title>
-    <style>
-      /* Overall page style */
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  background-color: #fdfdfd;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Redirecting to The Coffee House</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #faf6f2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
 
-/* Debug message */
-#debug-url {
-  color: #333;
-  font-size: 14px;
-  text-align: center;
-  margin-top: 1rem;
-  position: fixed;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: rgba(255, 255, 255, 0.9);
-  padding: 6px 12px;
-  border-radius: 6px;
-  z-index: 2000; /* Above overlay and popup */
-}
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      max-width: 340px;
+      width: 100%;
+      animation: fadeIn 0.6s ease;
+    }
 
-/* Overlay for dimming the background */
-#overlay {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 999;
-}
+    .logo {
+      width: 60px;
+      margin-bottom: 20px;
+    }
 
-/* Centered popup */
-#popup {
-  display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  padding: 24px;
-  border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
-  max-width: 90%;
-  width: 300px;
-  text-align: center;
-}
+    h1 {
+      font-size: 20px;
+      color: #5a3e2b;
+      margin-bottom: 8px;
+    }
 
-/* Generic button style */
-button {
-  font-size: 15px;
-  padding: 12px 18px;
-  margin: 10px 0;
-  width: 100%;
-  max-width: 220px;
-  border: 2px solid #ffb22c;
-  border-radius: 8px;
-  background-color: #ffb22c;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
+    p {
+      font-size: 14px;
+      color: #7a6e65;
+      margin-bottom: 24px;
+    }
 
-/* Hover effect for all buttons */
-button:hover {
-  background-color: #ffa500;
-  transform: scale(1.02);
-}
+    .redirect-btn {
+      background: #ffb22c;
+      border: none;
+      color: white;
+      font-size: 16px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+      width: 100%;
+    }
 
-/* Specific button ID styling if needed */
-#openStoreBtn {
-  position: relative;
-  overflow: hidden;
-  background-color: #91C8E4;
-  border: none;
-  color: white;
-  font-size: 16px;
-  padding: 14px 20px;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1;
-  
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform;
+    .redirect-btn:hover {
+      background: #FFCC00;
+      transform: translateY(-1px);
+    }
 
-}
+    .coffee-icon {
+      width: 40px;
+      margin-bottom: 12px;
+      animation: steam 2s ease-in-out infinite;
+    }
 
-#openStoreBtn .label {
-  position: relative;
-  z-index: 2;
-}
-@keyframes floatZ {
-  0%   { transform: translateY(0) scale(1); }
-  50%  { transform: translateY(0) scale(1.05); }
-  100% { transform: translateY(0) scale(1); }
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-#openStoreBtn:hover {
-  background-color: #EAA64D;
-  color: white;
-  
-  box-shadow: 0 0 22px #FFECCC, 0 0 24px #FFECCC;
-  filter: drop-shadow(0 0 8px #FFECCC);
-  
-  animation: floatZ 2s ease-in-out infinite;
-}
+    @keyframes steam {
+      0%   { transform: translateY(0); opacity: 0.7; }
+      50%  { transform: translateY(-6px); opacity: 1; }
+      100% { transform: translateY(0); opacity: 0.7; }
+    }
 
-    </style>
-  </head>
-  
-  <body>
-    <div id="popup">
-      <button id="openStoreBtn" class="popup-btn">
-  <span class="line top"></span>
-  <span class="line right"></span>
-  <span class="line bottom"></span>
-  <span class="line left"></span>
-  <span class="label">Open Store</span>
-</button>
+    .debug {
+      position: fixed;
+      bottom: 16px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 12px;
+      color: #a39b94;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
 
-<!--       <button id="launchAppBtn" class="popup-btn">The Coffee House App</button> -->
-    </div>
-<!--     <p>Redirecting...</p> -->
-    <p id="debug-url" style="margin-top: 1rem; color: black;">Loading...</p>
-    
-    <script>
-      const debug = document.getElementById("debug-url");
-      const fallbackUrl = "https://thecoffeehouse.com";
+  <div class="card">
+    <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" class="coffee-icon"/>
+    <h1>Redirecting to The Coffee House...</h1>
+    <p>Opening the app. If it doesn't work, tap the button below.</p>
+    <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
+  </div>
 
-      const suffix = getQueryParam("ref") || "default";
-      const encodedDeeplink = encodeURIComponent(suffix);
-      
-      const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-      const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
-        //"tch://screenA?userId=123";
-      
-      const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
-                          //`intent://home#Intent;scheme=thecoffeehouse;package=com.thecoffeehouse.guestapp;S.deeplink=${encodedDeeplink};S.src=${encodeSrc};end;`;
-      const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
-        //`https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&hl=en&referrer=deeplink%3D${encodedDeeplink}`;
-      
-      const ua = navigator.userAgent || navigator.vendor || window.opera;
+  <div class="debug" id="debug-url">Preparing redirect...</div>
 
-      function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
+  <script>
+    const debug = document.getElementById("debug-url");
+    const fallbackUrl = "https://thecoffeehouse.com";
+    const suffix = new URLSearchParams(window.location.search).get("ref") || "default";
+    const encodedDeeplink = encodeURIComponent(suffix);
+
+    const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
+    const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
+
+    const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
+    const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera;
+
+    function openStore() {
+      if (/android/i.test(ua)) {
+        window.location.href = androidStoreUrl;
+      } else if (/iPad|iPhone|iPod/.test(ua)) {
+        window.location.href = iosStoreUrl;
+      } else {
+        window.location.href = fallbackUrl;
       }
+    }
 
-      function openStore() {
+    window.onload = function () {
+      setTimeout(() => {
+        debug.textContent = "Trying to open app...";
         if (/android/i.test(ua)) {
-          window.location.href = androidStoreUrl;
-        } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-          window.location.href = iosStoreUrl;
+          window.location.href = androidUrl;
+          setTimeout(() => {
+            debug.textContent = "Redirecting to Google Play Store...";
+          }, 700);
+        } else if (/iPad|iPhone|iPod/.test(ua)) {
+          window.location.href = iosUrl;
+          setTimeout(() => {
+            debug.textContent = "Redirecting to App Store...";
+          }, 700);
+        } else {
+          debug.textContent = "Redirecting to website...";
+          window.location.href = fallbackUrl;
         }
-      }
-      // document.addEventListener("DOMContentLoaded", function() {
-      window.onload = function() {
-        // debug.textContent = `url: ${window.location.href}`;
-        setTimeout(() => {
-            debug.textContent = "Successfully";
-            if (/android/i.test(ua)) {
-              // debug.textContent = "Trying installed app";
-              window.location.href = androidUrl;
-              let fallbackTimer = setTimeout(function() {
-                document.getElementById('popup').style.display = 'block';
-                document.getElementById('overlay').style.display = 'block';
-                debug.textContent = `Open on PlayStore`;// ${androidStoreUrl}`;
-              }, 500);
-            } else if (/iPad|iPhone|iPod/.test(ua) && !window.MSStream) {
-              //debug.textContent = "Trying installed app";
-              window.location = iosUrl;
-              let fallbackTimer = setTimeout(function() {
-                debug.textContent = "Open on AppStore?";
-                document.getElementById('popup').style.display = 'block';
-                document.getElementById('overlay').style.display = 'block';
-              }, 500);
-            } else {
-              window.location.href = fallbackUrl;
-          }
-        }, 500);
-      };
-      // Optional: handle "Open" button click
-      document.getElementById('openStoreBtn').onclick = function() {
-        openStore();
-      };
-    </script>
-    
-  </body>
-  
+      }, 400);
+    };
+  </script>
+</body>
 </html>
+
+
+
