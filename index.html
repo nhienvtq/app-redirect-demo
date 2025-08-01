@@ -155,40 +155,8 @@
 
  -->
 
-
- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Redirecting to The Coffee House</title>
-  <style>
-    body { margin: 0; font-family: 'Segoe UI', sans-serif; background: #faf6f2;
-           display: flex; align-items: center; justify-content: center; min-height: 100vh; }
-    .card { background: white; padding: 40px 30px; border-radius: 16px;
-            box-shadow: 0 8px 30px rgba(0,0,0,.1); text-align: center; max-width: 340px; width: 100%; }
-    h1 { font-size: 20px; color: #5a3e2b; margin-bottom: 8px; }
-    p { font-size: 14px; color: #7a6e65; margin-bottom: 24px; }
-    .redirect-btn { background: #ffb22c; border: none; color: white; font-size: 16px;
-                    padding: 12px 20px; border-radius: 8px; cursor: pointer; width: 100%; }
-    .redirect-btn:hover { background: #FFCC00; }
-    .debug { position: fixed; bottom: 16px; left: 50%; transform: translateX(-50%);
-             font-size: 12px; color: #a39b94; opacity: 0.6; }
-  </style>
-</head>
-<body>
-
-<div class="card">
-  <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" width="60"/>
-  <h1>Redirecting to The Coffee House...</h1>
-  <p>Opening the app. If it doesn't work, tap the button below.</p>
-  <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
-</div>
-
-<div class="debug" id="debug-url">Preparing redirect...</div>
-
 <script>
-  const debug = document.getElementById("debug-url");
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
   const suffix = new URLSearchParams(window.location.search).get("ref") || "default";
   const encodedDeeplink = encodeURIComponent(suffix);
 
@@ -197,7 +165,6 @@
   const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
   const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
   const fallbackUrl = "https://thecoffeehouse.com";
-  const ua = navigator.userAgent || navigator.vendor || window.opera;
 
   function openStore() {
     if (/android/i.test(ua)) window.location.href = androidStoreUrl;
@@ -205,25 +172,30 @@
     else window.location.href = fallbackUrl;
   }
 
-  window.onload = function () {
-    setTimeout(() => {
-      debug.textContent = "Trying to open app...";
-      if (/android/i.test(ua)) {
-        window.location.href = androidUrl;
-        setTimeout(openStore, 1500);
-      } else if (/iPad|iPhone|iPod/.test(ua)) {
-        // iOS: use iframe to try opening the app
-        const iframe = document.createElement("iframe");
-        iframe.style.display = "none";
-        iframe.src = iosUrl;
-        document.body.appendChild(iframe);
+  function tryOpenApp() {
+    const start = Date.now();
+    
+    if (/android/i.test(ua)) {
+      window.location.href = androidUrl;
+    } else if (/iPad|iPhone|iPod/.test(ua)) {
+      const iframe = document.createElement("iframe");
+      iframe.style.display = "none";
+      iframe.src = iosUrl;
+      document.body.appendChild(iframe);
+    } else {
+      window.location.href = fallbackUrl;
+      return;
+    }
 
-        setTimeout(openStore, 2000);
-      } else {
-        window.location.href = fallbackUrl;
+    // Check if page is still visible after 1.5s
+    setTimeout(() => {
+      const elapsed = Date.now() - start;
+      if (!document.hidden && elapsed > 1200) {
+        openStore();
       }
-    }, 400);
-  };
+    }, 1500);
+  }
+
+  window.onload = tryOpenApp;
 </script>
-</body>
-</html>
+
