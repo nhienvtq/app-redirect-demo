@@ -132,13 +132,13 @@
         if (/android/i.test(ua)) {
           window.location.href = androidUrl;
           setTimeout(() => {
-            openStore()
+            // openStore()
             debug.textContent = "Redirecting to Google Play Store...";
           }, 1000);
         } else if (/iPad|iPhone|iPod/.test(ua)) {
           window.location.href = iosUrl;
           setTimeout(() => {
-            openStore()
+            //openStore()
             debug.textContent = "Redirecting to App Store...";
           }, 1000);
         } else {
