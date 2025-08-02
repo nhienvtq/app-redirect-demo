@@ -109,7 +109,7 @@
     const encodedDeeplink = encodeURIComponent(suffix);
 
     const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-    const iosUrl = "tch://";//`tch://deeplink=${encodedDeeplink};end;`;
+    const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
 
     const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
     const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
