@@ -101,7 +101,7 @@
   </div>
 
   <div class="debug" id="debug-url">Preparing redirect...</div>
-
+<a id="my-cool-app" href="tch://"> Open my app </a>
   <script>
     const debug = document.getElementById("debug-url");
     const fallbackUrl = "https://thecoffeehouse.com";
@@ -136,11 +136,14 @@
             debug.textContent = "Redirecting to Google Play Store...";
           }, 1000);
         } else if (/iPad|iPhone|iPod/.test(ua)) {
-          window.location.href = iosUrl;
-          setTimeout(() => {
-            //openStore()
-            debug.textContent = "Redirecting to App Store...";
-          }, 1000);
+          // window.location.href = iosUrl;
+          mounted(){
+            document.getElementById('my-cool-app').click();
+          }
+          // setTimeout(() => {
+          //   //openStore()
+          //   debug.textContent = "Redirecting to App Store...";
+          // }, 1000);
         } else {
           debug.textContent = "Redirecting to website...";
           window.location.href = fallbackUrl;
