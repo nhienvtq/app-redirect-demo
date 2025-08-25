@@ -129,22 +129,22 @@
       setTimeout(() => {
         debug.textContent = "Trying to open app...";
         if (/android/i.test(ua)) {
-          window.location.href = androidUrl;
-          // setTimeout(() => {
-            // openStore()
-            // debug.textContent = "Redirecting to Google Play Store...";
-          // }, 1000);
+          // window.location.href = androidUrl;
+          setTimeout(() => {
+            openStore()
+            debug.textContent = "Redirecting to Google Play Store...";
+          }, 10);
         } else if (/iPad|iPhone|iPod/.test(ua)) {
-          window.location.href = iosUrl;
-          // setTimeout(() => {
-            //openStore()
-          //   debug.textContent = "Redirecting to App Store...";
-          // }, 1000);
+          // window.location.href = iosUrl;
+          setTimeout(() => {
+            openStore()
+            debug.textContent = "Redirecting to App Store...";
+          }, 10);
         } else {
           debug.textContent = "Redirecting to website...";
           window.location.href = fallbackUrl;
         }
-      }, 400);
+      }, 10);
     };
   </script>
 </body>
