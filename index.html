@@ -103,47 +103,43 @@
   <div class="debug" id="debug-url">Preparing redirect...</div>
   <script>
     const debug = document.getElementById("debug-url");
+    
     const fallbackUrl = "https://thecoffeehouse.com";
+
+    //example link
+    //https://nhienvtq.github.io/app-redirect-demo/?ref=https://order.thecoffeehouse.com/qrscan?linknav
+//=https://order.thecoffeehouse.com/order?collection_id=67c1e980dcb62424520ebbc2?*src=RETEST1
+    
+    //from ref= the string is deeplink for using after install success
     const suffix = new URLSearchParams(window.location.search).get("ref") || "default";
-    const encodedDeeplink = encodeURIComponent(suffix);
+    //put to correct format of website
+    const encodedDeeplink = encodeURIComponent(suffix);  
 
     const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-    const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
+    //const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
 
-    const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
+    //referrer= - format of google play for after app install
     const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
-
+    //const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
+    
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
     function openStore() {
       if (/android/i.test(ua)) {
         window.location.href = androidStoreUrl;
+            debug.textContent = "Redirecting to Google Play Store...";
       } else if (/iPad|iPhone|iPod/.test(ua)) {
         window.location.href = iosStoreUrl;
+            debug.textContent = "Redirecting to App Store...";
       } else {
         window.location.href = fallbackUrl;
+          debug.textContent = "Redirecting to website...";
       }
     }
 
     window.onload = function () {
       setTimeout(() => {
-        debug.textContent = "Trying to open app...";
-        if (/android/i.test(ua)) {
-          // window.location.href = androidUrl;
-          setTimeout(() => {
             openStore()
-            debug.textContent = "Redirecting to Google Play Store...";
-          }, 10);
-        } else if (/iPad|iPhone|iPod/.test(ua)) {
-          // window.location.href = iosUrl;
-          setTimeout(() => {
-            openStore()
-            debug.textContent = "Redirecting to App Store...";
-          }, 10);
-        } else {
-          debug.textContent = "Redirecting to website...";
-          window.location.href = fallbackUrl;
-        }
       }, 10);
     };
   </script>
