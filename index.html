@@ -95,7 +95,7 @@
 
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" class="coffee-icon"/>
-    <h1>Redirecting to The Coffee House...2</h1>
+    <h1>Redirecting to The Coffee House...3</h1>
     <p>Opening the app. If it doesn't work, tap the button below.</p>
     <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
   </div>
@@ -116,7 +116,7 @@
     const encodedDeeplink = encodeURIComponent(suffix);  
 
     const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-    //const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
+    const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
 
     //referrer= - format of google play for after app install
     const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
@@ -144,13 +144,13 @@
        debug.textContent = "go...";
     if (/android/i.test(ua)) {
       window.location.href = androidUrl;
-       debug.textContent = "try app android...";
+       debug.textContent = "Launch tch android app...";
     } else if (/iPad|iPhone|iPod/.test(ua)) {
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src = iosUrl;
       document.body.appendChild(iframe);
-       debug.textContent = "try app ios...";
+       debug.textContent = "Launch tch ios app...";
     } else {
       window.location.href = fallbackUrl;
       return;
