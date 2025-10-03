@@ -103,7 +103,7 @@
 
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" class="coffee-icon"/>
-    <h1>Redirecting to The Coffee House...3</h1>
+    <h1>Redirecting to The Coffee House...4</h1>
     <p>Opening the app. If it doesn't work, tap the button below.</p>
     <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
   </div>
@@ -120,9 +120,7 @@
     
     //from ref= the string is deeplink for using after install success
     const raw = window.location.search.substring(1); // remove '?'
-    let suffix = raw.match(/link=(.*)/);
-    suffix = suffix.replace(/([?&])(fbclid|utm_[^=]+)=[^&]+/g, "");
-    suffix = suffix.replace(/[?&]$/, "");
+    const suffix = raw.match(/link=(.*)/);
     // const suffix = new URLSearchParams(window.location.search).get("link") || "default";
     //put to correct format of website
     const encodedDeeplink = encodeURIComponent(suffix);  
