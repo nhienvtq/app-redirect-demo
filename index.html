@@ -143,16 +143,18 @@
         
     if (/android/i.test(ua)) {
       window.location.href = androidUrl;
+       debug.textContent = "try app android...";
     } else if (/iPad|iPhone|iPod/.test(ua)) {
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
       iframe.src = iosUrl;
       document.body.appendChild(iframe);
+       debug.textContent = "try app ios...";
     } else {
       window.location.href = fallbackUrl;
       return;
     }
-      }, 10);
+      }, 1000);
     };
   </script>
 </body>
