@@ -98,7 +98,7 @@
 
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" class="coffee-icon"/>
-    <h1>Redirecting to The Coffee House...4</h1>
+    <h1>Redirecting to The Coffee House...5</h1>
     <p>Opening the app. If it doesn't work, tap the button below.</p>
     <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
   </div>
@@ -119,11 +119,11 @@
     const encodedDeeplink = encodeURIComponent(suffix);  
 
     const iosStoreUrl = "https://apps.apple.com/app/id1138218678";
-    const iosUrl = `tch://deeplink=${encodedDeeplink};end;`;
+    const iosUrl = `tch://link=${encodedDeeplink};end;`;
 
     //referrer= - format of google play for after app install
     const androidStoreUrl = `https://play.google.com/store/apps/details?id=com.thecoffeehouse.guestapp&referrer=deeplink%3D${encodedDeeplink}`;
-    const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.deeplink=${encodedDeeplink};end;`;
+    const androidUrl = `intent://home#Intent;scheme=thecoffeehouse;S.link=${encodedDeeplink};end;`;
     
     const ua = navigator.userAgent || navigator.vendor || window.opera;
 
