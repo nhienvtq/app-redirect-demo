@@ -120,7 +120,7 @@
     
     //from ref= the string is deeplink for using after install success
     const raw = window.location.search.substring(1); // remove '?'
-    const suffix = raw.match(/link=(.*)/);
+const suffix = raw.match(/(?:^|&)link=([^&]+)/);
     // const suffix = new URLSearchParams(window.location.search).get("link") || "default";
     //put to correct format of website
     const encodedDeeplink = encodeURIComponent(suffix);  
