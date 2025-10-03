@@ -103,7 +103,7 @@
 
   <div class="card">
     <img src="https://img.icons8.com/ios-filled/100/coffee.png" alt="Coffee" class="coffee-icon"/>
-    <h1>Redirecting to The Coffee House...2</h1>
+    <h1>Redirecting to The Coffee House...3</h1>
     <p>Opening the app. If it doesn't work, tap the button below.</p>
     <button class="redirect-btn" onclick="openStore()">☕ Open in Store</button>
   </div>
@@ -154,7 +154,7 @@
        debug.textContent = "go...";
     if (/android/i.test(ua)) {
       window.location.href = androidUrl;
-       debug.textContent = `${suffix}\nLaunch tch android app...\n${androidUrl}`;
+       debug.textContent = `${raw}\n\n\n${suffix}\n\n\nLaunch tch android app...\n\n\n${androidUrl}`;
     } else if (/iPad|iPhone|iPod/.test(ua)) {
       const iframe = document.createElement("iframe");
       iframe.style.display = "none";
