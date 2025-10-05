@@ -160,23 +160,23 @@ suffix = suffix.replace(/&fbclid.*/, "");
 
     window.onload = function () {
       setTimeout(() => {
-            // openStore()
+            openStore()
         
-       debug.textContent = "go...";
-    if (/android/i.test(ua)) {
-      window.location.href = androidUrl;
-       debug.textContent = `${suffix}`;
-       //Launch tch android app...\n\n\n${androidUrl}`;
-    } else if (/iPad|iPhone|iPod/.test(ua)) {
-      const iframe = document.createElement("iframe");
-      iframe.style.display = "none";
-      iframe.src = iosUrl;
-      document.body.appendChild(iframe);
-       debug.textContent = "Launch tch ios app...";
-    } else {
-      window.location.href = fallbackUrl;
-      return;
-    }
+    //    debug.textContent = "go...";
+    // if (/android/i.test(ua)) {
+    //   window.location.href = androidUrl;
+    //    debug.textContent = `${suffix}`;
+    //    //Launch tch android app...\n\n\n${androidUrl}`;
+    // } else if (/iPad|iPhone|iPod/.test(ua)) {
+    //   const iframe = document.createElement("iframe");
+    //   iframe.style.display = "none";
+    //   iframe.src = iosUrl;
+    //   document.body.appendChild(iframe);
+    //    debug.textContent = "Launch tch ios app...";
+    // } else {
+    //   window.location.href = fallbackUrl;
+    //   return;
+    // }
       }, 1000);
     };
   </script>
